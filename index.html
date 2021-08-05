@@ -1,56 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="codemirror.js"></script>
-    <script src="xml.js"></script>
-    <script src="closetag.js"></script>
-    <link href="codemirror.css" rel="stylesheet"/>
-    <link href="railscasts.css" rel="stylesheet"/>
-    <!--TailWindCss-->
-<link href='https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css' rel='stylesheet'/>
-<link href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/railscasts.min.css' rel='stylesheet'/>
-<script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.0/highlight.min.js'></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
-<script defer='defer' src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js'></script>
-<script src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' type='text/javascript'></script>
-    <title>Errur Code</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online, Live Code Editor</title>
+  <meta name="description" content="This is an online code editor for html css and javascript. ">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="David Mungai">
+  <meta name="keywords" content="Live code editor, online code editor, live html editor, live css editor, live javascript editor">
+  <link rel="stylesheet" href="main.css" />
 </head>
+
 <body>
-    <textarea id="editor1"><h1>Gunjan Jain</h1></textarea>
-    <textarea id="editor2"><h1>Gunjan Jain</h1></textarea>
-    <textarea id="editor3"><h1>Gunjan Jain</h1></textarea>
-    <script>
-var editor1 = CodeMirror.fromTextArea
-(document.getElementById('editor1'),{
-    mode: "xml",
-        theme: "railscasts",
-        lineNumbers: true,
-        autoCloseTags: true
-});
-        editor1.setSize("250","300")
+  <div class="header-wrap">
+    <h1>Live, Online Code Editor</h1>
+    <h4>Compile HTML, CSS and JavaScript on the web</h4>
+  </div>
+  <div id="ide-parent">
+    <div id="button-wrapper">
+      <button onclick="switchPanel(0)">HTML</button>
+      <button onclick="switchPanel(1)">CSS</button>
+      <button onclick="switchPanel(2)">js</button>
+      <button onclick="runEdit(3)">Result</button>
+    </div>
+    <div id="ide-container">
+      <div class="panel-wrapper">
+        <div id="html">
+&lt;!--predefined html, but editable--&gt;
 
-        var editor2 = CodeMirror.fromTextArea
-(document.getElementById('editor2'),{
-    mode: "xml",
-        theme: "railscasts",
-        lineNumbers: true,
-        autoCloseTags: true
-});
-        editor2.setSize("250","300")
+&lt;div class="circle"&gt;
+	click me!
+&lt;/div&gt;
 
-        var editor3 = CodeMirror.fromTextArea
-(document.getElementById('editor3'),{
-    mode: "xml",
-        theme: "railscasts",
-        lineNumbers: true,
-        autoCloseTags: true
-});
-        editor3.setSize("250","300")
+        </div>
+      </div>
+      <div class="panel-wrapper">
+        <div id="css">
+/*predefined CSS, but editable*/
 
-    </script>
+.circle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background: crimson;
+	margin: auto;
+	margin-top: 50px;
+	transition-duration: 300ms;
+}
+        </div>
+      </div>
+      <div class="panel-wrapper">
+        <div id="js">
+//predefined JavaScript, but editable
+
+var circle = document.querySelector(".circle");
+var bool = false;
+
+circle.addEventListener('click', function() {
+	if (!bool) {
+		circle.style.background = "coral";
+		bool = true;
+	} else {
+		circle.style.background = "crimson";
+		bool = false;
+	}
+});
+        </div>
+      </div>
+      <div class="panel-wrapper">
+        <iframe id="result"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="description">
+    <p>This code editor uses Ace for syntax highlighting and other text
+      editing features. Addition or changes to
+      the code is compiled on the fly when the result tab is clicked.</p>
+	 
+    
+	
+  </div>
+  <div class="footer">
+    <div class="inner-wrap">
+      <p>&#169; <span></span> abc</p>
+      <div class="icons-wrap">
+       
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="app.js"></script>
 </body>
+
 </html>
